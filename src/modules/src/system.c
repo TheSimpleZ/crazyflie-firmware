@@ -59,6 +59,7 @@
 #include "queuemonitor.h"
 #include "buzzer.h"
 #include "sound.h"
+#include "crazyflieModel.h"
 
 #ifdef PLATFORM_CF1
 #include "uart.h"
@@ -178,7 +179,8 @@ void systemTask(void *arg)
 
   commInit();
   commanderInit();
-  stabilizerInit();
+  //stabilizerInit();
+  crazyflieModelInit();
 #ifdef PLATFORM_CF2
   deckInit();
   #endif
@@ -194,7 +196,8 @@ void systemTask(void *arg)
   pass &= configblockTest();
   pass &= commTest();
   pass &= commanderTest();
-  pass &= stabilizerTest();
+  //pass &= stabilizerTest();
+  pass &= crazyflieModelTest();
 #ifdef PLATFORM_CF2
   pass &= deckTest();
   #endif

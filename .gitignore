@@ -15,3 +15,6 @@ version.c
 *.gch
 
 /generated-test/**
+
+simulink-model/crazyflie_ert_rtw/
+simulink-model/slprj/

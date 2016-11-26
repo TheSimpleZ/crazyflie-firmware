@@ -192,7 +192,12 @@ PROJ_OBJ_CF2 += configblockeeprom.o
 # Libs
 PROJ_OBJ_CF2 += libarm_math.a
 
-OBJ = $(FREERTOS_OBJ) $(PORT_OBJ) $(ST_OBJ) $(PROJ_OBJ)
+# Code Generation
+SRCS=$(notdir $(wildcard simulink-model/crazyflie_ert_rtw/*.c))
+CODE_GEN=$(SRCS:.c=.o)
+ 
+
+OBJ = $(FREERTOS_OBJ) $(PORT_OBJ) $(ST_OBJ) $(PROJ_OBJ) $(CODE_GEN)
 ifeq ($(PLATFORM), CF1)
 OBJ += $(CRT0_CF1) $(ST_OBJ_CF1) $(PROJ_OBJ_CF1)
 endif
@@ -319,7 +324,7 @@ endif
 #################### Targets ###############################
 
 
-all: check_submodules build
+all: move check_submodules build
 build: clean_version compile print_version size
 compile: clean_version $(PROG).hex $(PROG).bin $(PROG).dfu
 
@@ -389,6 +394,10 @@ prep:
 
 check_submodules:
 	@$(PYTHON2) tools/make/check-for-submodules.py
+
+move:
+	bash -c "cp -r simulink-model/crazyflie_ert_rtw/*.h src/modules/interface/ && cp -r simulink-model/crazyflie_ert_rtw/*.c src/modules/src/"
+
 
 include tools/make/targets.mk
 
