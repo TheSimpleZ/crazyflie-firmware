@@ -1,6 +1,6 @@
 # Crazyflie 1.0/2.0 Firmware  [![Build Status](https://api.travis-ci.org/bitcraze/crazyflie-firmware.svg)](https://travis-ci.org/bitcraze/crazyflie-firmware)
 
-This project contains the source code for the Crazyflie 1.0/2.0 firmware. 
+This project contains the source code for the Crazyflie 1.0/2.0 firmware with the added functionality of model based code generation.
 
 ## Dependencies
 
@@ -41,7 +41,7 @@ sudo pacman -S community/arm-none-eabi-gcc community/arm-none-eabi-gdb community
 This repository uses git submodules. Clone with the --recursive flag
 
 ```bash
-git clone --recursive https://github.com/bitcraze/crazyflie-firmware.git
+git clone --recursive https://github.com/TheSimpleZ/crazyflie-firmware.git
 ```
 
 If you already have cloned the repo, use
